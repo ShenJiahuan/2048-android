@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="background">#f9f7eb</color>
+    <color name="color_fg_gameover">#505050</color>
+    <color name="color_bg_gameover">#66E7C250</color>
+    <color name="color_fg_null">#c1b4a4</color>
+    <color name="color_bg_null">#c1b4a4</color>
+    <color name="color_fg_2">#645b52</color>
+    <color name="color_bg_2">#e9ddd1</color>
+    <color name="color_fg_4">#645b52</color>
+    <color name="color_bg_4">#e8d9bd</color>
+    <color name="color_fg_8">#f8f4ee</color>
+    <color name="color_bg_8">#eda166</color>
+    <color name="color_fg_16">#f8f4ee</color>
+    <color name="color_bg_16">#f08150</color>
+    <color name="color_fg_32">#f8f4ee</color>
+    <color name="color_bg_32">#f1654d</color>
+    <color name="color_fg_64">#f8f4ee</color>
+    <color name="color_bg_64">#f1472d</color>
+    <color name="color_fg_128">#f8f4ee</color>
+    <color name="color_bg_128">#e8c65f</color>
+    <color name="color_fg_256">#f8f4ee</color>
+    <color name="color_bg_256">#e7c250</color>
+    <color name="color_fg_512">#f8f4ee</color>
+    <color name="color_bg_512">#e8bf40</color>
+    <color name="color_fg_1024">#f8f4ee</color>
+    <color name="color_bg_1024">#e7bb31</color>
+    <color name="color_fg_2048">#f8f4ee</color>
+    <color name="color_bg_2048">#e8b703</color>
+</resources>

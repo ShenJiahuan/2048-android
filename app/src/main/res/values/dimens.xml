@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="width_percent" type="dimen" format="float">20.0</item>
+    <item name="height_percent" type="dimen" format="float">20.0</item>
+</resources>

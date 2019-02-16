@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer-array name="top_margin_ratio">
+        <item>2</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+    </integer-array>
+
+    <integer-array name="bottom_margin_ratio">
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>2</item>
+    </integer-array>
+
+    <integer-array name="left_margin_ratio">
+        <item>2</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+    </integer-array>
+
+    <integer-array name="right_margin_ratio">
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>2</item>
+    </integer-array>
+</resources>
