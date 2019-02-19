@@ -8,4 +8,16 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="scoreboard_info" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/color_score_info</item>
+        <item name="android:fontFamily">@font/helvetica</item>
+    </style>
+
+    <style name="scoreboard_value" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/color_score_value</item>
+        <item name="android:fontFamily">@font/helvetica</item>
+    </style>
+
 </resources>

@@ -5,6 +5,61 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     >
+
+    <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/score_board"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/grid_layout"
+        android:layout_centerVertical="false"
+        android:columnCount="2"
+        android:rowCount="1"
+        android:useDefaultMargins="false">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/current_score_board"
+            android:background="@drawable/rounded_corner"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/current_score_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="SCORE"
+                android:textAlignment="center"
+                style="@style/scoreboard_info"></TextView>
+
+            <TextView
+                android:id="@+id/current_score_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textAlignment="center"
+                style="@style/scoreboard_value"></TextView>
+        </LinearLayout>
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/max_score_board"
+            android:background="@drawable/rounded_corner"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/max_score_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="BEST"
+                android:textAlignment="center"
+                style="@style/scoreboard_info"></TextView>
+
+            <TextView
+                android:id="@+id/max_score_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textAlignment="center"
+                style="@style/scoreboard_value"></TextView>
+        </LinearLayout>
+    </GridLayout>
     <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/grid_layout"
         android:layout_width="wrap_content"

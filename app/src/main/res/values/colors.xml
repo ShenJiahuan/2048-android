@@ -30,4 +30,6 @@
     <color name="color_bg_1024">#e7bb31</color>
     <color name="color_fg_2048">#f8f4ee</color>
     <color name="color_bg_2048">#e8b703</color>
+    <color name="color_score_info">#f8f4ee</color>
+    <color name="color_score_value">#ffffff</color>
 </resources>

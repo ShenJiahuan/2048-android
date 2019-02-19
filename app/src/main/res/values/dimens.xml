@@ -2,4 +2,6 @@
 <resources>
     <item name="width_percent" type="dimen" format="float">20.0</item>
     <item name="height_percent" type="dimen" format="float">20.0</item>
+    <item name="scoreboard_width_percent" type="dimen" format="float">20.0</item>
+    <item name="scoreboard_height_percent" type="dimen" format="float">13.0</item>
 </resources>

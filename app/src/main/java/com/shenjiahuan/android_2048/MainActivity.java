@@ -17,8 +17,11 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.GridLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.GridLayout.LayoutParams;
+
+import org.w3c.dom.Text;
 
 import java.util.Locale;
 
@@ -99,6 +102,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void updateScore() {
+        TextView currentScore = findViewById(R.id.current_score_value);
+        currentScore.setText(String.format(Locale.US, "%d", grid.getScore()));
+        TextView maxScore = findViewById(R.id.max_score_value);
+        maxScore.setText(String.format(Locale.US, "%d", grid.getScore()));
+    }
+
     private void update() {
         for (int i = 0; i < 4; ++i) {
             for (int j = 0; j < 4; ++j) {
@@ -107,6 +117,7 @@ public class MainActivity extends AppCompatActivity {
                 updateTextView(text[i][j], num, prop);
             }
         }
+        updateScore();
         if (!grid.alive()) {
             GridLayout gameOverGrid = findViewById(R.id.restart_grid);
             TextView gameOver = createTextView();
@@ -172,6 +183,30 @@ public class MainActivity extends AppCompatActivity {
         return size.x;
     }
 
+    private int getGridWidth() {
+        int width = getWidth();
+        TypedValue typedValue = new TypedValue();
+        getResources().getValue(R.dimen.width_percent, typedValue, true);
+        float width_percent = typedValue.getFloat();
+        int gridWidth = (int) (width * width_percent / 100) * 4;
+        for (int _i = 0; _i < 4; ++_i) {
+            gridWidth += width * leftMarginRatio[_i] / 100 + width * rightMarginRatio[_i] / 100;
+        }
+        return gridWidth;
+    }
+
+    private int getGridHeight() {
+        int width = getWidth();
+        TypedValue typedValue = new TypedValue();
+        getResources().getValue(R.dimen.height_percent, typedValue, true);
+        float height_percent = typedValue.getFloat();
+        int gridHeight = (int) (width * height_percent / 100) * 4;
+        for (int _i = 0; _i < 4; ++_i) {
+            gridHeight += width * topMarginRatio[_i] / 100 + width * bottomMarginRatio[_i] / 100;
+        }
+        return gridHeight;
+    }
+
     private TextView createTextView() {
         Typeface font = Typeface.createFromAsset(getAssets(), "fonts/helvetica-bold.ttf");
         TextView textView = new TextView(this);
@@ -199,16 +234,45 @@ public class MainActivity extends AppCompatActivity {
             params.leftMargin = width * leftMarginRatio[j] / 100;
             params.rightMargin = width * rightMarginRatio[j] / 100;
         } else {
-            params.height = (int) (width * height_percent / 100) * 4;
-            params.width = (int) (width * width_percent / 100) * 4;
-            for (int _i = 0; _i < 4; ++_i) {
-                params.height += width * topMarginRatio[_i] / 100 + width * bottomMarginRatio[_i] / 100;
-            }
-            for (int _j = 0; _j < 4; ++_j) {
-                params.width += width * leftMarginRatio[_j] / 100 + width * rightMarginRatio[_j] / 100;
-            }
+            params.height = getGridHeight();
+            params.width = getGridWidth();
         }
         return params;
+    }
+
+    private LayoutParams createScoreBoardLayoutParams(int j) {
+        int width = getWidth();
+        int gridWidth = getGridWidth();
+        int margin = (width - gridWidth) / 2;
+        GridLayout.Spec rowSpec = spec(0, GridLayout.CENTER);
+        GridLayout.Spec colSpec = spec(j, GridLayout.CENTER);
+        LayoutParams params = new GridLayout.LayoutParams(rowSpec, colSpec);
+        TypedValue typedValue = new TypedValue();
+        getResources().getValue(R.dimen.scoreboard_height_percent, typedValue, true);
+        float scoreboardHeightPercent = typedValue.getFloat();
+        getResources().getValue(R.dimen.scoreboard_width_percent, typedValue, true);
+        float scoreboardWidthPercent = typedValue.getFloat();
+        params.height = (int) (width * scoreboardHeightPercent / 100);
+        params.width = (int) (width * scoreboardWidthPercent / 100);
+        params.setMargins(margin, 0, 0, 0);
+        return params;
+    }
+
+    private void initScoreBoard() {
+        GridLayout scoreBoard = findViewById(R.id.score_board);
+        int width = getWidth();
+        int gridWidth = getGridWidth();
+        int x = (width - gridWidth) / 2;
+        int y = (int)(scoreBoard.getY() - (width - gridWidth) / 2);
+        scoreBoard.setX(x);
+        scoreBoard.setY(y);
+        LinearLayout currentScore = findViewById(R.id.current_score_board);
+        LayoutParams currentScoreParams = createScoreBoardLayoutParams(0);
+        currentScore.setLayoutParams(currentScoreParams);
+        LinearLayout maxScore = findViewById(R.id.max_score_board);
+        LayoutParams maxScoreParams = createScoreBoardLayoutParams(1);
+        maxScore.setLayoutParams(maxScoreParams);
+
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -227,6 +291,7 @@ public class MainActivity extends AppCompatActivity {
                 text[i][j] = textView;
             }
         }
+        initScoreBoard();
         update();
         gridLayout.setOnTouchListener(new View.OnTouchListener() {
             public boolean onTouch(View v, MotionEvent event) {
